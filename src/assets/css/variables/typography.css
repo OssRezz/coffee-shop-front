@@ -1,0 +1,68 @@
+:root {
+  --font-family: "Geologica", sans-serif;
+
+  /* Font size */
+  --font-size-01: 0.75rem; /* 12px */
+  --font-size-02: 0.875rem; /* 14px */
+  --font-size-03: 1rem; /* 16px */
+  --font-size-04: 1.125rem; /* 18px */
+  --font-size-05: 1.25rem; /* 20px */
+  --font-size-06: 1.5rem; /* 24px */
+  --font-size-07: 1.75rem; /* 28px */
+  --font-size-08: 2rem; /* 32px */
+  --font-size-09: 2.25rem; /* 36px */
+  --font-size-10: 2.625rem; /* 42px */
+  --font-size-11: 3rem; /* 48px */
+  --font-size-12: 3.375rem; /* 54px */
+  --font-size-13: 3.75rem; /* 60px */
+  --font-size-14: 4.25rem; /* 68px */
+  --font-size-15: 4.75rem; /* 76px */
+  --font-size-16: 5.25rem; /* 84px */
+  --font-size-17: 5.75rem; /* 92px */
+
+  /* Font weight */
+  --font-weight-extralight: 250;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Line height */
+  --line-height-font-01: 20px;
+  --line-height-font-02: 22px;
+  --line-height-font-03: 24px;
+  --line-height-font-04: 26px;
+  --line-height-font-05: 24px;
+  --line-height-font-06: 28px;
+  --line-height-font-07: 32px;
+  --line-height-font-08: 36px;
+  --line-height-font-09: 40px;
+  --line-height-font-10: 46px;
+  --line-height-font-11: 52px;
+  --line-height-font-12: 58px;
+  --line-height-font-13: 64px;
+  --line-height-font-14: 72px;
+  --line-height-font-15: 80px;
+  --line-height-font-16: 88px;
+  --line-height-font-17: 96px;
+
+  /* Letter spacing */
+
+  --letter-spacing-font-01: 0.32px;
+  --letter-spacing-font-02: 0.32px;
+  --letter-spacing-font-03: 0.32px;
+  --letter-spacing-font-04: 0.32px;
+  --letter-spacing-font-05: 0.16px;
+  --letter-spacing-font-06: 0.16px;
+  --letter-spacing-font-07: 0.16px;
+  --letter-spacing-font-08: 0.16px;
+  --letter-spacing-font-09: 0.16px;
+  --letter-spacing-font-10: 0.16px;
+  --letter-spacing-font-11: 0px;
+  --letter-spacing-font-12: 0px;
+  --letter-spacing-font-13: 0px;
+  --letter-spacing-font-14: 0px;
+  --letter-spacing-font-15: 0px;
+  --letter-spacing-font-16: 0px;
+  --letter-spacing-font-17: 0px;
+}

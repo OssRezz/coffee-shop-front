@@ -1,0 +1,67 @@
+:root {
+  --primary-01-color: #3f3f3f;
+  --primary-02-color: #ffffff;
+  --secondary-01-color: #0273b0;
+  --secondary-02-color: #0090bf;
+
+  --bg-sidebar-active-light: #0090bf26;
+  --bg-card-darkmode: #333333;
+  --bg-table-header: #475467;
+  --bg-table-body: #101828;
+  --bg-title-header: #1c1c1c;
+  --black-04: #444444;
+
+  /* Neutros */
+  --Neutros-N50: #f6f6f6;
+  --Neutros-N100: #e7e7e7;
+  --Neutros-N200: #cdcdcd;
+  --Neutros-N300: #a4a4a4;
+  --Neutros-N400: #767676;
+  --Neutros-N500: #4c4c4c;
+  --Neutros-N600: #1e1e1e;
+
+  /* Rojos */
+  --Rojos-R50: #ffdfdf;
+  --Rojos-R100: #faacac;
+  --Rojos-R200: #f79797;
+  --Rojos-R300: #c25151;
+  --Rojos-R400: #b53232;
+  --Rojos-R500: #991d1d;
+  --Rojos-R600: #541818;
+
+  /* Amarillos */
+  --Amarillos-Y50: #fffae9;
+  --Amarillos-Y100: #feefbb;
+  --Amarillos-Y200: #fbe18a;
+  --Amarillos-Y300: #f7cf45;
+  --Amarillos-Y400: #e2b108;
+  --Amarillos-Y500: #bc9305;
+  --Amarillos-Y600: #816913;
+
+  /* Verdes */
+  --Verdes-G50: #e6f9f0;
+  --Verdes-G100: #b0eccf;
+  --Verdes-G200: #8ae3be;
+  --Verdes-G300: #8ae3be;
+  --Verdes-G400: #229061;
+  --Verdes-G500: #0f5c3b;
+  --Verdes-G600: #073b25;
+
+  /* Naranjas */
+  --Naranjas-O50: #fff3e9;
+  --Naranjas-O100: #ffe3c9;
+  --Naranjas-O200: #ffc086;
+  --Naranjas-O300: #ffc086;
+  --Naranjas-O400: #e88328;
+  --Naranjas-O500: #a65b18;
+  --Naranjas-O600: #632f01;
+
+  /* Azul */
+  --Azul-B50: #eefafd;
+  --Azul-B100: #cceff8;
+  --Azul-B200: #7ad8f0;
+  --Azul-B300: #51b9d3;
+  --Azul-B400: #1e9cbb;
+  --Azul-B500: #197e97;
+  --Azul-B600: #115769;
+}

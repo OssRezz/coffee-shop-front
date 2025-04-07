@@ -1,0 +1,31 @@
+.card-product {
+  width: 350px;
+  min-height: 500px;
+  transition: all 500ms ease-in-out;
+}
+
+.card-product:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.card-img-top {
+  height: 280px; /* Ajusta según lo que necesites */
+  object-fit: cover;
+  width: 100%;
+}
+
+.description-wrapper {
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.description-wrapper.collapsed {
+  max-height: 1.5em; /* Ajusta según el tamaño de letra */
+}
+
+.description-wrapper.expanded {
+  max-height: 500px; /* Lo suficientemente grande para cualquier descripción */
+}
