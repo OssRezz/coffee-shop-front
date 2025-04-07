@@ -15,8 +15,6 @@ export class HttpClient {
         },
       }
     );
-    console.log(`${this.baseURL}${url}`);
-    console.log(res.json);
     return await res.json();
   }
 

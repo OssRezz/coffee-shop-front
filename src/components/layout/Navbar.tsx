@@ -1,6 +1,6 @@
-import { ShoppingBasket } from "lucide-react";
 import CoffeeShopLogo from "./../../assets/images/logo_coffee_shop.png";
 import { NavLink } from "react-router-dom";
+import { CartButton } from "../Cart/CartButton";
 
 const Navbar = () => {
   return (
@@ -10,14 +10,7 @@ const Navbar = () => {
           <img src={CoffeeShopLogo} alt="" height="45px" loading="lazy" />
         </a>
 
-        <div className="d-flex align-items-center order-lg-2 ms-auto">
-          <a href="#" className="btn position-relative">
-            <ShoppingBasket />
-            <span className="position-absolute top-0 start-90 translate-middle badge rounded-pill bg-danger">
-              3<span className="visually-hidden">productos en el carrito</span>
-            </span>
-          </a>
-        </div>
+        <CartButton />
 
         <button
           className="navbar-toggler"
