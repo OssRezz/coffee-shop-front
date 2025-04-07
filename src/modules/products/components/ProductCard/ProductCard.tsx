@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./ProductCard.css";
 import { ProductCardProps } from "./product-card-props";
+import { AddToCartButton } from "./AddToCartButton";
+import CoffeeShopLogo from "../../../../assets/images/logo_coffee_shop.png";
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   const [showMore, setShowMore] = useState(false);
@@ -10,7 +12,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const handleToggle = () => setShowMore(!showMore);
   const imageSrc = product.image
     ? `${import.meta.env.VITE_API_BASE_URL}/uploads/products/${product.image}`
-    : "https://placehold.co/600x400";
+    : CoffeeShopLogo;
+
   return (
     <div className="card shadow-sm border-0 rounded-4 px-3 h-100 card-product">
       <img
@@ -18,7 +21,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         className="card-img-top rounded-top-4 p-3"
         alt={product.name}
         loading="lazy"
-        onError={(e) => (e.currentTarget.src = "https://placehold.co/600x400")}
+        onError={(e) => (e.currentTarget.src = CoffeeShopLogo)}
       />
 
       <div className="card-body d-flex flex-column">
@@ -52,9 +55,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             </span>
             <span className="badge bg-primary">Stock: {product.quantity}</span>
           </div>
-          <a href="#" className="btn btn-dark w-100 rounded-pill">
-            Añadir al carrito
-          </a>
+          <AddToCartButton product={product} />
         </div>
       </div>
     </div>

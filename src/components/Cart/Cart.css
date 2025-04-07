@@ -1,0 +1,6 @@
+.img-cart {
+  object-fit: "cover" !important;
+  border-radius: "0.5rem" !important;
+  width: 60px !important;
+  height: 60px !important;
+}

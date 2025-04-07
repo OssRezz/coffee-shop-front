@@ -13,7 +13,6 @@ const ProductList = () => {
       setLoading(true);
       try {
         const result = await getProducts();
-        console.log(result);
         setProducts(result);
       } catch (err) {
         console.error("Error al cargar productos:", err);
