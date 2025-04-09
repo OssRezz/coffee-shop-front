@@ -72,7 +72,7 @@ export const cartSlice = createSlice({
       state.items = [];
       state.totalQuantity = 0;
     },
-    replaceCart(state, action: PayloadAction<CartState>) {
+    replaceCart(_state, action: PayloadAction<CartState>) {
       return action.payload;
     },
   },
