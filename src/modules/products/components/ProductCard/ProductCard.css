@@ -12,7 +12,7 @@
 }
 
 .card-img-top {
-  height: 280px; /* Ajusta según lo que necesites */
+  height: 280px; 
   object-fit: cover;
   width: 100%;
 }
@@ -23,9 +23,9 @@
 }
 
 .description-wrapper.collapsed {
-  max-height: 1.5em; /* Ajusta según el tamaño de letra */
+  max-height: 1.5em;
 }
 
 .description-wrapper.expanded {
-  max-height: 500px; /* Lo suficientemente grande para cualquier descripción */
+  max-height: 500px;
 }

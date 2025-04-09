@@ -15,7 +15,7 @@ interface TransactionState {
 const initialState: TransactionState = {
   current: undefined,
 };
-
+//Not in use
 export const transactionSlice = createSlice({
   name: "transaction",
   initialState,

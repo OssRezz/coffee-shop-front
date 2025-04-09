@@ -8,3 +8,15 @@ body {
   font-style: normal;
   font-variation-settings: "slnt" 0, "CRSV" 0.5, "SHRP" 0;
 }
+
+.modal-90w {
+  max-width: 90vw;
+}
+
+.toast-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1055;
+  pointer-events: none;
+}

@@ -1,15 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store";
-import {
-  incrementQuantity,
-  decrementQuantity,
-  clearCart,
-} from "../../store/cartSlice";
-import { registerTransaction } from "../../store/transactionSlice";
+import { incrementQuantity, decrementQuantity } from "../../store/cartSlice";
 import CoffeeShopLogo from "./../../assets/images/logo_coffee_shop.png";
 import "./Cart.css";
+import { useNavigate } from "react-router-dom";
 
 export const CartOffcanvas = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart.items);
 
@@ -17,22 +14,6 @@ export const CartOffcanvas = () => {
     (acc, item) => acc + item.price * item.quantityInCart,
     0
   );
-
-  const handleCheckout = () => {
-    const status: "pending" = "pending";
-
-    const transaction = {
-      id: crypto.randomUUID(),
-      products: cart,
-      total,
-      status,
-      createdAt: new Date().toISOString(),
-    };
-
-    dispatch(registerTransaction(transaction));
-    dispatch(clearCart());
-    alert("¡Transacción registrada!");
-  };
 
   return (
     <div
@@ -43,7 +24,7 @@ export const CartOffcanvas = () => {
     >
       <div className="offcanvas-header">
         <h5 className="offcanvas-title" id="cartOffcanvasLabel">
-          Carrito
+          Shopping Cart
         </h5>
         <button
           type="button"
@@ -104,8 +85,10 @@ export const CartOffcanvas = () => {
                 <h6> ${total / 100}</h6>
               </div>
               <button
+                type="button"
                 className="btn btn-warning w-100 mt-2"
-                onClick={handleCheckout}
+                data-bs-dismiss="offcanvas"
+                onClick={() => navigate("/checkout")}
               >
                 Proceed to checkout
               </button>
