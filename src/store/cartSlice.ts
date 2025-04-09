@@ -21,7 +21,13 @@ const loadCartFromStorage = (): CartState => {
   try {
     const stored = localStorage.getItem("cart");
     if (stored) {
-      return JSON.parse(stored);
+      const parsed = JSON.parse(stored);
+      if (
+        Array.isArray(parsed.items) &&
+        typeof parsed.totalQuantity === "number"
+      ) {
+        return parsed;
+      }
     }
   } catch (e) {
     console.error("Error al leer el carrito del localStorage", e);

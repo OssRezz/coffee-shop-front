@@ -5,18 +5,9 @@ import {
   decrementQuantity,
 } from "../../../../store/cartSlice";
 import { RootState } from "../../../../store";
+import { PropsCartButton } from "../../interfaces/props-cart-button";
 
-interface Props {
-  product: {
-    id: number;
-    name: string;
-    price: number;
-    image?: string | null;
-    quantity: number;
-  };
-}
-
-export const AddToCartButton = ({ product }: Props) => {
+export const AddToCartButton = ({ product }: PropsCartButton) => {
   const dispatch = useDispatch();
 
   const cartItem = useSelector((state: RootState) =>
@@ -25,10 +16,10 @@ export const AddToCartButton = ({ product }: Props) => {
 
   const quantityInCart = cartItem?.quantityInCart || 0;
 
-  if (product.quantity === 0) {
+  if (product.quantity <= 0) {
     return (
       <button className="btn btn-secondary w-100 rounded-pill" disabled>
-        Sin stock
+        Out of stock
       </button>
     );
   }
@@ -37,14 +28,28 @@ export const AddToCartButton = ({ product }: Props) => {
     <div className="d-flex justify-content-between align-items-center">
       <button
         className="btn btn-outline-secondary btn-sm"
-        onClick={() => dispatch(decrementQuantity(product.id))}
+        onClick={() => {
+          dispatch(decrementQuantity(product.id));
+          if (quantityInCart === 1) {
+            (window as any).dispatchToast?.(
+              `${product.name} removed from cart`
+            );
+          }
+        }}
       >
         -
       </button>
       <span className="mx-2">{quantityInCart}</span>
       <button
         className="btn btn-outline-secondary btn-sm"
-        onClick={() => dispatch(incrementQuantity(product.id))}
+        onClick={() => {
+          if (quantityInCart < product.quantity) {
+            dispatch(incrementQuantity(product.id));
+          } else {
+            (window as any).dispatchToast?.(`No more stock available`);
+          }
+        }}
+        disabled={quantityInCart >= product.quantity}
       >
         +
       </button>
@@ -52,14 +57,15 @@ export const AddToCartButton = ({ product }: Props) => {
   ) : (
     <button
       className="btn btn-dark w-100 rounded-pill"
-      onClick={() =>
+      onClick={() => {
         dispatch(
           addToCart({
             ...product,
-            image: product.image ?? undefined, // null → undefined
+            image: product.image ?? undefined,
           })
-        )
-      }
+        );
+        (window as any).dispatchToast?.(`${product.name} added to cart`);
+      }}
     >
       Add to cart
     </button>

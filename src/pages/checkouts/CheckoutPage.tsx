@@ -1,13 +1,29 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store";
-import { incrementQuantity, decrementQuantity } from "../../store/cartSlice";
+import {
+  incrementQuantity,
+  decrementQuantity,
+  clearCart,
+} from "../../store/cartSlice";
 import CoffeeShopLogo from "./../../assets/images/logo_coffee_shop.png";
 import { CreditCard } from "lucide-react";
 import { useState } from "react";
 import CreditCardModal from "../../modules/checkouts/components/CreditCardModal";
+import { CreditCardValues } from "../../modules/checkouts/interfaces/credit-card-values";
+import PaymentSummaryBackdrop from "../../modules/checkouts/components/PaymentSummaryBackdrop";
+import { CheckoutController } from "../../modules/checkouts/controllers/checkout.controller";
+import { useNavigate } from "react-router-dom";
+import { showErrorAlert } from "../../utils/showErrorAlert";
+import { generateRandomEmail } from "../../utils/generateRandomEmail";
 
 const CheckOutPage = () => {
   const [show, setShow] = useState(false);
+  const [cardFormData, setCardFormData] = useState<CreditCardValues | null>(
+    null
+  );
+  const [showSummary, setShowSummary] = useState(false);
+  const [loadingPayment, setLoadingPayment] = useState(false);
+  const navigate = useNavigate();
 
   const cart = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
@@ -18,6 +34,74 @@ const CheckOutPage = () => {
     (acc, item) => acc + item.price * item.quantityInCart,
     0
   );
+  const baseFee = Math.round(total * 0.1);
+  const deliveryFee = 980000;
+  const handleCardSubmit = (data: CreditCardValues) => {
+    setCardFormData(data);
+    setShow(false);
+    setShowSummary(true);
+  };
+
+  const handleConfirmPayment = async () => {
+    if (!cardFormData) {
+      console.error("No card data available");
+      return;
+    }
+
+    setLoadingPayment(true);
+
+    const [expMonth, expYear] = cardFormData.expiry.split("/");
+
+    const products_checkout = cart.map((item) => ({
+      productId: Number(item.id),
+      quantity: Number(item.quantityInCart),
+      price: Number(item.price),
+    }));
+
+    const fakeEmail = generateRandomEmail(
+      Math.floor(Math.random() * (15 - 8 + 1)) + 8
+    );
+
+    const checkout_result = await CheckoutController({
+      card: {
+        cardNumber: cardFormData.cardNumber,
+        cvc: cardFormData.cvc,
+        expMonth: expMonth,
+        expYear: expYear,
+        cardHolder: cardFormData.name,
+      },
+      amountInCents: total,
+      currency: "COP",
+      installments: 1,
+      customer: {
+        documentNumber: cardFormData.document_number,
+        name: cardFormData.name,
+        cellphone: cardFormData.cellphone,
+        email: fakeEmail,
+        address: cardFormData.address,
+      },
+      products: products_checkout,
+    });
+
+    setLoadingPayment(false);
+
+    if (!checkout_result.success && checkout_result.errors) {
+      document.activeElement instanceof HTMLElement &&
+        document.activeElement.blur();
+
+      setShowSummary(false);
+      showErrorAlert("Payment rejected", checkout_result.errors);
+
+      return;
+    }
+
+    if (checkout_result.success && checkout_result.data?.transactionId) {
+      const id = checkout_result.data.transactionId;
+      dispatch(clearCart());
+      localStorage.removeItem("cart");
+      navigate(`/transactions/detail/${id}`);
+    }
+  };
 
   return (
     <div className="row  d-flex justify-content-center">
@@ -86,7 +170,22 @@ const CheckOutPage = () => {
                   </button>
                 </div>
 
-                <CreditCardModal show={show} handleClose={handleClose} />
+                <CreditCardModal
+                  show={show}
+                  handleClose={handleClose}
+                  onSubmitSuccess={handleCardSubmit}
+                />
+                <PaymentSummaryBackdrop
+                  show={showSummary}
+                  onClose={() => setShowSummary(false)}
+                  onConfirm={() => {
+                    handleConfirmPayment();
+                  }}
+                  productAmount={total}
+                  baseFee={baseFee}
+                  deliveryFee={deliveryFee}
+                  loading={loadingPayment}
+                />
               </>
             )}
           </div>

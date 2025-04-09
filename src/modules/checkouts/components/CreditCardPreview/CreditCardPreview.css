@@ -1,0 +1,38 @@
+.credit-card-preview {
+  width: 100%;
+  max-width: 380px;
+  min-height: 220px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  transition: all 0.3s ease-in-out;
+  font-family: "Roboto", sans-serif;
+  overflow: hidden;
+  position: relative;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  opacity: 0.75;
+
+}
+
+.credit-card-preview .opacity-75 {
+  opacity: 0.75;
+}
+
+.credit-card-preview .fs-5 {
+  font-size: 1.25rem;
+}
+
+.credit-card-preview .fw-bold {
+  font-weight: 600;
+}
+
+.credit-card-preview small.text-uppercase {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  letter-spacing: 0.05em;
+}
+
+.credit-card-preview small.text-muted {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}

@@ -1,11 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store";
-import {
-  incrementQuantity,
-  decrementQuantity,
-  // clearCart,
-} from "../../store/cartSlice";
-// import { registerTransaction } from "../../store/transactionSlice";
+import { incrementQuantity, decrementQuantity } from "../../store/cartSlice";
 import CoffeeShopLogo from "./../../assets/images/logo_coffee_shop.png";
 import "./Cart.css";
 import { useNavigate } from "react-router-dom";
@@ -19,23 +14,6 @@ export const CartOffcanvas = () => {
     (acc, item) => acc + item.price * item.quantityInCart,
     0
   );
-
-  // const handleCheckoutPage = () => {
-  //   navigate("/checkout");
-  //   // const status: "pending" = "pending";
-
-  //   // const transaction = {
-  //   //   id: crypto.randomUUID(),
-  //   //   products: cart,
-  //   //   total,
-  //   //   status,
-  //   //   createdAt: new Date().toISOString(),
-  //   // };
-
-  //   // dispatch(registerTransaction(transaction));
-  //   // dispatch(clearCart());
-  //   // alert("¡Transacción registrada!");
-  // };
 
   return (
     <div
