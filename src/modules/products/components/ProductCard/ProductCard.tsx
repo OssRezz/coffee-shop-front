@@ -3,6 +3,7 @@ import "./ProductCard.css";
 import { ProductCardProps } from "./product-card-props";
 import { AddToCartButton } from "./AddToCartButton";
 import CoffeeShopLogo from "../../../../assets/images/logo_coffee_shop.png";
+import { formatCOP } from "../../../../utils/formatCOP";
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   const [showMore, setShowMore] = useState(false);
@@ -43,7 +44,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               onClick={handleToggle}
               className="btn btn-link p-0 mt-1 text-primary small see-more"
             >
-              {showMore ? "Ver menos" : "Ver más"}
+              {showMore ? "See less" : "See more"}
             </button>
           )}
         </div>
@@ -51,7 +52,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <div className="mt-auto">
           <div className="d-flex justify-content-between align-items-center mb-2">
             <span className="fw-bold fs-5 text-success">
-              ${product.price / 100}
+              {formatCOP(product.price / 100)}
             </span>
             <span className="badge bg-primary">Stock: {product.quantity}</span>
           </div>

@@ -30,7 +30,10 @@ const ProductList = () => {
         <SkeletonCards count={24} />
       ) : (
         products.map((product) => (
-          <div className="col-auto d-flex justify-content-center" key={`product-${product.id}`}>
+          <div
+            className="col-12 col-md-6 col-lg-auto d-flex justify-content-center"
+            key={`product-${product.id}`}
+          >
             <ProductCard product={product} />
           </div>
         ))

@@ -99,9 +99,15 @@ const CreditCardModal = ({ show, handleClose, onSubmitSuccess }: Props) => {
                 Name <b className="text-danger">*</b>
               </label>
               <input
-                {...register("name", { required: "The name is required" })}
+                {...register("name", {
+                  required: "The name is required",
+                  minLength: {
+                    value: 6,
+                    message: "The name must be at least 6 characters",
+                  },
+                })}
                 className="form-control"
-                placeholder="Cardholder Name"
+                placeholder="Name"
                 onFocus={() => setFocus("name")}
               />
               {errors.name && (
@@ -111,7 +117,7 @@ const CreditCardModal = ({ show, handleClose, onSubmitSuccess }: Props) => {
 
             <div className="col-12 col-lg-6">
               <label className="form-label">
-                Card Number <b className="text-danger">*</b>
+                Card number <b className="text-danger">*</b>
               </label>
               <input
                 {...register("cardNumber", {
@@ -121,7 +127,7 @@ const CreditCardModal = ({ show, handleClose, onSubmitSuccess }: Props) => {
                     "Invalid card number",
                 })}
                 className="form-control"
-                placeholder="Card Number"
+                placeholder="Card number"
                 maxLength={19}
                 onFocus={() => setFocus("cardNumber")}
               />
@@ -132,7 +138,7 @@ const CreditCardModal = ({ show, handleClose, onSubmitSuccess }: Props) => {
 
             <div className="col-12 col-lg-6">
               <label className="form-label">
-                Expiration Date <b className="text-danger">*</b>
+                Expiration date <b className="text-danger">*</b>
               </label>
               <input
                 {...register("expiry", {
@@ -202,6 +208,10 @@ const CreditCardModal = ({ show, handleClose, onSubmitSuccess }: Props) => {
               <input
                 {...register("document_number", {
                   required: "The document is required",
+                  minLength: {
+                    value: 7,
+                    message: "The document must be at least 7 characters",
+                  },
                 })}
                 className="form-control"
                 placeholder="Identification"
@@ -219,6 +229,10 @@ const CreditCardModal = ({ show, handleClose, onSubmitSuccess }: Props) => {
               <input
                 {...register("cellphone", {
                   required: "The phone is required",
+                  minLength: {
+                    value: 10,
+                    message: "The phone must be at least 10 characters",
+                  },
                 })}
                 className="form-control"
                 placeholder="Phone"

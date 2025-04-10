@@ -5,6 +5,7 @@ import CoffeeShopLogo from "../../assets/images/logo_coffee_shop.png";
 import { JellyTriangle } from "@uiball/loaders";
 import { getStatusInfo } from "../../utils/getStatusInfo";
 import { showErrorAlert } from "../../utils/showErrorAlert";
+import { formatCOP } from "../../utils/formatCOP";
 
 const TransactionDetailPage = () => {
   const { transactionId } = useParams();
@@ -64,7 +65,7 @@ const TransactionDetailPage = () => {
         <p className="mb-1 text-muted">
           Reference: <strong>{transaction.reference}</strong>
         </p>
-        <p className="text-muted">Fecha: {date}</p>
+        <p className="text-muted">Date: {date}</p>
       </div>
 
       <div className="row justify-content-center mb-5">
@@ -81,7 +82,7 @@ const TransactionDetailPage = () => {
         </div>
       </div>
 
-      <div className="row">
+      <div className="row d-flex justify-content-center">
         {sale?.details.map((detail: any, i: number) => {
           const product = detail.product;
           const imageSrc = product.image
@@ -91,23 +92,22 @@ const TransactionDetailPage = () => {
             : CoffeeShopLogo;
 
           return (
-            <div key={i} className="col-md-4 mb-5">
-              <div className="card h-100 shadow-sm border-0 rounded-4">
+            <div key={i} className="col-12 col-md-6 col-lg-auto d-flex justify-content-center mb-5">
+              <div className="card h-100 shadow-sm border-0 rounded-4 card-product">
                 <img
                   src={imageSrc}
                   alt={product.name}
                   className="card-img-top rounded-top-4"
-                  style={{ height: "200px", objectFit: "cover" }}
                   loading="lazy"
                   onError={(e) => (e.currentTarget.src = CoffeeShopLogo)}
                 />
                 <div className="card-body">
                   <h5 className="card-title">{product.name}</h5>
                   <p className="card-text text-muted">
-                    Cantidad: {detail.quantity}
+                    Quantity: {detail.quantity}
                   </p>
                   <p className="card-text text-success fw-semibold">
-                    ${detail.price / 100}
+                    {formatCOP(detail.price / 100)}
                   </p>
                 </div>
               </div>

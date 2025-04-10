@@ -17,7 +17,6 @@ const CreditCardPreview = ({ number, name, expiry, cvc, focused }: Props) => {
   const cardData = cardValidator.number(number);
   const cardType = cardData.card?.type;
 
-  console.log(focused);
   const getLogo = () => {
     switch (cardType) {
       case "visa":

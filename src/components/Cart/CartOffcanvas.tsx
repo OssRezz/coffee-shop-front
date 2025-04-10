@@ -4,6 +4,7 @@ import { incrementQuantity, decrementQuantity } from "../../store/cartSlice";
 import CoffeeShopLogo from "./../../assets/images/logo_coffee_shop.png";
 import "./Cart.css";
 import { useNavigate } from "react-router-dom";
+import { formatCOP } from "../../utils/formatCOP";
 
 export const CartOffcanvas = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export const CartOffcanvas = () => {
     >
       <div className="offcanvas-header">
         <h5 className="offcanvas-title" id="cartOffcanvasLabel">
-          Shopping Cart
+          Shopping cart
         </h5>
         <button
           type="button"
@@ -36,7 +37,7 @@ export const CartOffcanvas = () => {
 
       <div className="offcanvas-body d-flex flex-column h-100">
         {cart.length === 0 ? (
-          <p className="text-muted">Your Cart is empty.</p>
+          <p className="text-muted">Your cart is empty.</p>
         ) : (
           <>
             {cart.map((item) => (
@@ -59,7 +60,7 @@ export const CartOffcanvas = () => {
                 />
                 <div className="ms-3 flex-grow-1">
                   <p className="mb-1 fw-semibold">{item.name}</p>
-                  <small>${item.price / 100}</small>
+                  <small>{formatCOP(item.price / 100)}</small>
                 </div>
                 <div className="d-flex align-items-center">
                   <button
@@ -82,7 +83,7 @@ export const CartOffcanvas = () => {
             <div className="mt-auto border-top pt-3">
               <div className="col-12 d-flex justify-content-between">
                 <h6>Total:</h6>
-                <h6> ${total / 100}</h6>
+                <h6> {formatCOP(total / 100)}</h6>
               </div>
               <button
                 type="button"

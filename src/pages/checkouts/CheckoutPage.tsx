@@ -15,6 +15,7 @@ import { CheckoutController } from "../../modules/checkouts/controllers/checkout
 import { useNavigate } from "react-router-dom";
 import { showErrorAlert } from "../../utils/showErrorAlert";
 import { generateRandomEmail } from "../../utils/generateRandomEmail";
+import { formatCOP } from "../../utils/formatCOP";
 
 const CheckOutPage = () => {
   const [show, setShow] = useState(false);
@@ -135,7 +136,7 @@ const CheckOutPage = () => {
                     />
                     <div className="ms-3 flex-grow-1">
                       <p className="mb-1 fw-semibold">{item.name}</p>
-                      <small>${item.price / 100}</small>
+                      <small>{formatCOP(item.price / 100)}</small>
                     </div>
                     <div className="d-flex align-items-center">
                       <button
@@ -158,7 +159,7 @@ const CheckOutPage = () => {
                 <div className="mt-auto  pt-3 text-end">
                   <div className="col-12 d-flex justify-content-end">
                     <h6 className="me-2">Total:</h6>
-                    <h6> ${total / 100}</h6>
+                    <h6> {formatCOP(total / 100)}</h6>
                   </div>
                   <button
                     type="button"
@@ -185,6 +186,7 @@ const CheckOutPage = () => {
                   baseFee={baseFee}
                   deliveryFee={deliveryFee}
                   loading={loadingPayment}
+                  cardData={cardFormData}
                 />
               </>
             )}
