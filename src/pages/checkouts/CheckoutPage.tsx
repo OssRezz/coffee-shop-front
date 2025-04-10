@@ -36,7 +36,7 @@ const CheckOutPage = () => {
     0
   );
   const baseFee = Math.round(total * 0.1);
-  const deliveryFee = 980000;
+  const deliveryFee = 9800;
   const handleCardSubmit = (data: CreditCardValues) => {
     setCardFormData(data);
     setShow(false);
@@ -62,7 +62,7 @@ const CheckOutPage = () => {
     const fakeEmail = generateRandomEmail(
       Math.floor(Math.random() * (15 - 8 + 1)) + 8
     );
-
+    const amountInCents = Math.round((total + baseFee + deliveryFee) * 100);
     const checkout_result = await CheckoutController({
       card: {
         cardNumber: cardFormData.cardNumber,
@@ -71,7 +71,7 @@ const CheckOutPage = () => {
         expYear: expYear,
         cardHolder: cardFormData.name,
       },
-      amountInCents: total * 100 + baseFee * 100 + deliveryFee,
+      amountInCents: amountInCents,
       currency: "COP",
       installments: 1,
       customer: {
