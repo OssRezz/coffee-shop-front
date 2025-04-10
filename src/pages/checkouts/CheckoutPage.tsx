@@ -71,7 +71,7 @@ const CheckOutPage = () => {
         expYear: expYear,
         cardHolder: cardFormData.name,
       },
-      amountInCents: total,
+      amountInCents: total * 100 + baseFee * 100 + deliveryFee,
       currency: "COP",
       installments: 1,
       customer: {
