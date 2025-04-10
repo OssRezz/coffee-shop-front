@@ -82,20 +82,20 @@ const PaymentSummaryBackdrop = ({
           <div className="col-12 col-lg-4">
             <div className="d-flex justify-content-between mb-2">
               <span>Product Total:</span>
-              <strong>{formatCOP(productAmount / 100)}</strong>
+              <strong>{formatCOP(productAmount)}</strong>
             </div>
             <div className="d-flex justify-content-between mb-2">
               <span>Base Fee:</span>
-              <strong>{formatCOP(baseFee / 100)}</strong>
+              <strong>{formatCOP(baseFee)}</strong>
             </div>
             <div className="d-flex justify-content-between mb-2">
               <span>Delivery Fee:</span>
-              <strong>{formatCOP(deliveryFee / 100)}</strong>
+              <strong>{formatCOP(deliveryFee)}</strong>
             </div>
             <hr />
             <div className="d-flex justify-content-between">
               <span>Total:</span>
-              <strong>{formatCOP(total / 100)}</strong>
+              <strong>{formatCOP(total)}</strong>
             </div>
           </div>
 

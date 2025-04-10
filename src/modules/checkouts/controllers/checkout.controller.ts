@@ -1,6 +1,6 @@
 import { CheckoutInterface } from "../interfaces/checkout-interface";
 import { HttpClient } from "../../../services/httpClient";
-import { CheckoutModel } from "../models/checkout.mode";
+import { CheckoutModel } from "../models/checkout.model";
 import { mapApiErrors } from "../../../utils/mapApiErrors";
 import { TransactionResponse } from "../interfaces/transaction-response";
 

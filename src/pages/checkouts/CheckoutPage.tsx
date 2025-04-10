@@ -136,7 +136,7 @@ const CheckOutPage = () => {
                     />
                     <div className="ms-3 flex-grow-1">
                       <p className="mb-1 fw-semibold">{item.name}</p>
-                      <small>{formatCOP(item.price / 100)}</small>
+                      <small>{formatCOP(item.price)}</small>
                     </div>
                     <div className="d-flex align-items-center">
                       <button
@@ -159,7 +159,7 @@ const CheckOutPage = () => {
                 <div className="mt-auto  pt-3 text-end">
                   <div className="col-12 d-flex justify-content-end">
                     <h6 className="me-2">Total:</h6>
-                    <h6> {formatCOP(total / 100)}</h6>
+                    <h6> {formatCOP(total)}</h6>
                   </div>
                   <button
                     type="button"

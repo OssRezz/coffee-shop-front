@@ -52,7 +52,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <div className="mt-auto">
           <div className="d-flex justify-content-between align-items-center mb-2">
             <span className="fw-bold fs-5 text-success">
-              {formatCOP(product.price / 100)}
+              {formatCOP(product.price)}
             </span>
             <span className="badge bg-primary">Stock: {product.quantity}</span>
           </div>

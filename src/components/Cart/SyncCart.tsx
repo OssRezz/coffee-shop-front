@@ -9,7 +9,7 @@ export const SyncCart = () => {
       if (event.key === "cart") {
         try {
           const newCart = JSON.parse(event.newValue || "{}");
-          dispatch({ type: "cart/replaceCart", payload: newCart }); // <-- lo veremos abajo
+          dispatch({ type: "cart/replaceCart", payload: newCart }); 
         } catch (e) {
           console.error("Error sincronizando carrito", e);
         }

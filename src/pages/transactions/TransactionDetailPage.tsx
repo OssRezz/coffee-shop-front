@@ -76,7 +76,7 @@ const TransactionDetailPage = () => {
               <strong>Address:</strong> {sale?.address}
             </p>
             <p className="mb-0">
-              <strong>Total pay:</strong> ${sale?.totalAmount / 100}
+              <strong>Total pay:</strong> ${sale?.totalAmount}
             </p>
           </div>
         </div>
@@ -107,7 +107,7 @@ const TransactionDetailPage = () => {
                     Quantity: {detail.quantity}
                   </p>
                   <p className="card-text text-success fw-semibold">
-                    {formatCOP(detail.price / 100)}
+                    {formatCOP(detail.price)}
                   </p>
                 </div>
               </div>

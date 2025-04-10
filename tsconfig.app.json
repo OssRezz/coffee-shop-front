@@ -9,6 +9,7 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
+    "types": ["jest", "node"], 
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",

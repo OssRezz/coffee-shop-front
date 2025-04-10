@@ -1,10 +1,11 @@
+import { getEnvBaseUrl } from "../utils/env";
 import { handleResponse } from "../utils/handleResponse";
 
 export class HttpClient {
   private baseURL: string;
 
   constructor(baseURL?: string) {
-    this.baseURL = baseURL || import.meta.env.VITE_API_BASE_URL;
+    this.baseURL = baseURL ?? getEnvBaseUrl();
   }
 
   async get<T>(url: string): Promise<T> {
